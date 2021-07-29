@@ -1,9 +1,9 @@
 "use strict";
 
-const masinos = [];
+let masinos = [];
 let simtukas = 100;
 let finish = false;
-let timeOut = 500;
+let timeOut = 0;
 
 class Masina {
     constructor(pavadinimas) {
@@ -42,7 +42,6 @@ class Masina {
     simtas() {
         if (this.kelias >= simtukas && !finish) {
             timeOut += 500;
-            console.log(timeOut);
             let HTML = `Nuvaziuota: ${simtukas}km! Pirmauja: ${this.pavadinimas}<br>`;
             let HTML2 = `<div style="width: ${this.kelias}px;"></div>`;
 
@@ -71,11 +70,14 @@ class SportineMasina extends Masina {
         this.spoilerisUp ? this.greitis -= (kiek/2) : this.greitis -= kiek;
     }
 }
-function lentynes() {
-    for (let i=1; i<=8; i++) {
-        i < 7 ? masinos.push(new Masina(`auto-${i}`)) : masinos.push(new SportineMasina(`sport-${i}${i}${i}`));
-    }
 
+// lets get to start line!!!
+for (let i=1; i<=8; i++) {
+    i < 7 ? masinos.push(new Masina(`car-${i}`)) : masinos.push(new SportineMasina(`sport-${i}${i}${i}`));
+}
+
+// lets go!!!
+function lentynes() {
     while (!finish) {
         for(const m of masinos) {
             if (m instanceof SportineMasina) {
@@ -110,5 +112,18 @@ function lentynes() {
 
 document.getElementById('vaziuojam').addEventListener('click', () => {
     lentynes();
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+    masinos = [];
+    simtukas = 100;
+    finish = false;
+    timeOut = 0;
+    for (let i=1; i<=8; i++) {
+        i < 7 ? masinos.push(new Masina(`car-${i}`)) : masinos.push(new SportineMasina(`sport-${i}${i}${i}`));
+    }
+    // let HTML2 = `<div style="width: 0;"></div>`;
+    document.getElementById('output').innerHTML = '';
+    document.getElementById('car-1').innerHTML = `<div style="width: 0;"></div>`;
 });
 
