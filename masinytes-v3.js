@@ -79,7 +79,7 @@ class Masina {
                     i++;
                 }
                 document.getElementById('results').insertAdjacentHTML('beforeend', HTML);
-            }, 5000);
+            }, 6000);
             return true;
         }
     }
