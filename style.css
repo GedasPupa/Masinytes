@@ -20,8 +20,8 @@ button {
 }
 
 .cars {
-    width: 90%;
-    margin-left: 5%;
+    width: 100%;
+    margin-left: 3%;
     display: flex;
     flex-direction: column;
     gap: 12px;

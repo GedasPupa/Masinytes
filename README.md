@@ -39,4 +39,4 @@ __lenktynes:__
 
 ### Design
 
-_f r e e / minimalistic_
+_f r e e / minimalistic / d e s c t o p_
